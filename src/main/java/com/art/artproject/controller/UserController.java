@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> showCards(){
+    public ResponseEntity<List<User>> showUser(){
         List<User> users=userService.showAll();
         return new ResponseEntity<>(users,HttpStatus.OK);
     }
