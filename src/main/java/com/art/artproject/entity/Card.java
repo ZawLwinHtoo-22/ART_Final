@@ -14,7 +14,9 @@ public class Card {
     private Long id;
     private String image;
     private String imageTitle;
-    private String price;
+    private Double price;
+    private String description;
+    private String userName;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")

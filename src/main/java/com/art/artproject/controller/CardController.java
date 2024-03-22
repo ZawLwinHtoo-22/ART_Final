@@ -19,8 +19,8 @@ public class CardController {
     private CardService cardService;
 
     @PostMapping
-    public ResponseEntity<TalentResponse> createCard(@RequestBody NewCardRequest request){
-        Card card=cardService.createCard(request);
+    public ResponseEntity<TalentResponse> createCard(@RequestParam Long user_id,@RequestBody NewCardRequest request){
+        Card card=cardService.createCard(user_id,request);
         TalentResponse response=
                 new TalentResponse(card,"Successfully created", HttpStatus.CREATED);
         return new ResponseEntity<>(response,HttpStatus.CREATED);

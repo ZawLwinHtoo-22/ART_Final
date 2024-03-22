@@ -13,7 +13,6 @@ public class NewUserRequest {
     private Long id;
     private String firstName;
     private String lastName;
-    private String userName;
     private String phoneNumber;
     private String mail;
     private String profileImage;
@@ -27,7 +26,7 @@ public class NewUserRequest {
         return new User()
                 .builder()
                 .id(userRequest.getId())
-                .userName(userRequest.getUserName())
+                .userName(userRequest.getFirstName()+" "+userRequest.getLastName())
                 .profileImage(userRequest.getProfileImage())
                 .build();
     }

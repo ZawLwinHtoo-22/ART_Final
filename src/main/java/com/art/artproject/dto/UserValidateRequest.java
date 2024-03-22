@@ -8,5 +8,5 @@ import lombok.Setter;
 public class UserValidateRequest {
 
     private String mail;
-
+    private String password;
 }

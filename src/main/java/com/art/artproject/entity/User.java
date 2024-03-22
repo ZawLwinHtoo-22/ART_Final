@@ -27,14 +27,12 @@ public class User {
     private String profileImage;
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Card> cards = new ArrayList<>();
 
     public static User of(NewUserRequest request) {
         User user = new User();
         user.firstName = request.getFirstName();
         user.lastName = request.getLastName();
-        user.userName = request.getUserName();
+        user.userName = request.getFirstName()+" "+request.getLastName();
         user.phoneNumber = request.getPhoneNumber();
         user.mail = request.getMail();
         user.profileImage = request.getProfileImage();

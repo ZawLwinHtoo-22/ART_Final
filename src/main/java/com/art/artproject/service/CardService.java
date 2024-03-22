@@ -6,7 +6,7 @@ import com.art.artproject.entity.Card;
 import java.util.List;
 
 public interface CardService {
-    Card createCard(NewCardRequest request);
+    Card createCard(Long user_id,NewCardRequest request);
     List<Card> showAll();
     List<Card> showWithType(Long category_id);
 }
