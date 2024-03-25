@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfo validateUser(UserValidateRequest request) {
         final User user = userRepo
-                .findUsersByMail(request.getMail())
+                .findUsersByMailAndPassword(request.getMail(),request.getPassword())
                 .orElseThrow( () -> new RuntimeException("No User"));
 
         return UserInfo.of(user);
