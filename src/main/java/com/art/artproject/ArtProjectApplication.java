@@ -10,6 +10,8 @@ public class ArtProjectApplication{
 
     public static void main(String[] args) {
         SpringApplication.run(ArtProjectApplication.class, args);
+
+
     }
 
     @Bean

@@ -17,6 +17,8 @@ public class Card {
     private Double price;
     private String description;
     private String userName;
+    @Column(name = "admin_approved")
+    private Boolean admin_approved;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
@@ -25,6 +27,5 @@ public class Card {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="category_id")
     private Category category;
-
 
 }
