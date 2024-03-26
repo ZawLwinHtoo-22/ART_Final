@@ -1,6 +1,5 @@
 package com.art.artproject.controller;
 
-import com.art.artproject.dto.NewFeedbackRequest;
 import com.art.artproject.dto.NewUserRequest;
 import com.art.artproject.domain.TalentResponse;
 import com.art.artproject.dto.UserResponse;
@@ -25,7 +24,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<TalentResponse<UserResponse>> registerUser(@RequestBody NewUserRequest request){
         TalentResponse<UserResponse> response=
-                new TalentResponse<>(userService.registerUser(request),"Successfully registered", HttpStatus.CREATED );
+                new TalentResponse<>(userService.registerUser(request), "Successfully registered", HttpStatus.CREATED );
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
     @PostMapping("/validate")

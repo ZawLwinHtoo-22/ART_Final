@@ -7,7 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NewCardRequest {
-    private String image;
+
+    private String file;
     private String imageTitle;
     private Double price;
     private String description;

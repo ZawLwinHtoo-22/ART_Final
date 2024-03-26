@@ -8,11 +8,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String image;
+    private String file;
     private String imageTitle;
     private Double price;
     private String description;

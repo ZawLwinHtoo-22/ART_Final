@@ -9,9 +9,11 @@ import com.art.artproject.repo.CardRepo;
 import com.art.artproject.repo.CategoryRepo;
 import com.art.artproject.repo.UserRepo;
 import com.art.artproject.service.CardService;
+import com.art.artproject.utils.FileUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +33,7 @@ public class CardServiceImpl implements CardService {
     @Autowired
     private CardService cardService;
     @Override
-    public Card createCard(Long user_id,NewCardRequest request) {
+    public Card createCard(MultipartFile file,Long user_id, NewCardRequest request) {
         Card card=mapper.map(request,Card.class);
         Optional<User> user=userRepo.findById(user_id);
         Optional<UserNameResponse> userNameResponseOptional = userRepo.findUserNameById(user_id);
@@ -46,6 +48,8 @@ public class CardServiceImpl implements CardService {
         Category category=categoryRepo.findById(request.getCategory_id()).get();
         card.setUser(user.get());
         card.setCategory(category);
+        FileUtils.save(file);
+
         return cardRepo.save(card);
     }
 

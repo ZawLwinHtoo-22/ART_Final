@@ -21,7 +21,7 @@ public class FeedbackController {
     public ResponseEntity<TalentResponse<Feedback>> giveFeedback(@RequestParam Long user_id, @RequestBody NewFeedbackRequest request){
         Feedback feedback = feedbackService.giveFeedback(user_id, request);
         TalentResponse response =
-                new TalentResponse<>(feedback, "Success give feedback",HttpStatus.CREATED);
+                new TalentResponse<>(feedback, card, "Success give feedback",HttpStatus.CREATED);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 

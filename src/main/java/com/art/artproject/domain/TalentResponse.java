@@ -1,5 +1,6 @@
 package com.art.artproject.domain;
 
+import com.art.artproject.entity.Card;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
