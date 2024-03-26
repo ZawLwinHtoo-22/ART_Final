@@ -1,6 +1,5 @@
 package com.art.artproject.entity;
 
-import com.art.artproject.dto.NewCardRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,16 +8,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Card {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
-    private String image;
     private String imageTitle;
     private Double price;
     private String description;
     private String userName;
-//    @Column(name = "admin_approved")
-//    private Boolean admin_approved;
+
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")

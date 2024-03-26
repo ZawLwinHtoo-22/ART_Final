@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,9 +19,14 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
-    @PostMapping
-    public ResponseEntity<TalentResponse> createCard(@RequestParam Long user_id,@RequestBody NewCardRequest request){
-        Card card=cardService.createCard(user_id,request);
+//    @PostMapping("/upload")
+//    public String saveFile(@RequestParam MultipartFile file){
+//        return FileUtils.save(file);
+//    }
+
+    @PostMapping(consumes = "multipart/form-data")
+    public ResponseEntity<TalentResponse> createCard(@RequestParam MultipartFile file,@RequestParam Long user_id,@RequestBody NewCardRequest request){
+        Card card=cardService.createCard(file, user_id,request);
         TalentResponse response=
                 new TalentResponse(card,"Successfully created", HttpStatus.CREATED);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
