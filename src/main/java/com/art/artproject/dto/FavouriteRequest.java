@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class FavouriteRequest {
 
+    private Long user_id;
     private Boolean favourite;
-    private Long card_id;
 }

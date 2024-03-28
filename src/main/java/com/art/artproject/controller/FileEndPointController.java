@@ -1,7 +1,9 @@
 package com.art.artproject.controller;
 
-import com.art.artproject.utils.FileExtentionMapper;
-import com.art.artproject.utils.FileUtils;
+
+import com.art.artproject.entity.FileExtentionMapper;
+import com.art.artproject.entity.FileUtils;
+
 import org.springframework.core.io.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

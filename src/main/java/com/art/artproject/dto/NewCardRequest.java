@@ -8,10 +8,11 @@ import lombok.Setter;
 @Setter
 public class NewCardRequest {
 
+
+    private String imageFile;
     private String file;
     private String imageTitle;
     private Double price;
     private String description;
-    private Long user_id;
     private Long category_id;
 }
