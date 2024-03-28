@@ -22,7 +22,8 @@ public class PaymentController {
     public ResponseEntity<TalentResponse> createPayment(@RequestParam Long user_id, @RequestParam Long card_id, @RequestBody PaymentRequest paymentRequest){
         Payment payment = paymentService.createPayment(user_id, card_id, paymentRequest);
         TalentResponse response =
-                new TalentResponse<>(payment, "Success", HttpStatus.CREATED);
+                new TalentResponse<>(payment,"Success", HttpStatus.CREATED);
+
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
