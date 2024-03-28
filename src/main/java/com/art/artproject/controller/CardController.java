@@ -4,7 +4,7 @@ import com.art.artproject.domain.TalentResponse;
 import com.art.artproject.dto.NewCardRequest;
 import com.art.artproject.entity.Card;
 import com.art.artproject.service.CardService;
-import com.art.artproject.utils.FileUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,30 +20,12 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
-//    @PostMapping("/save")
-//    public void saveCard(@RequestParam("image") MultipartFile image,
-//                         @RequestParam("file") MultipartFile file,
-//                         @RequestParam("title") String title) {
-//        try {
-//            Card card = new Card();
-//            card.setImageData(image.getBytes());
-//            card.setFileData(file.getBytes());
-//            card.setTitle(title);
-//            cardService.saveCard(card);
-//        } catch (Exception e) {
-//            // Handle exceptions
-//        }
-//    }
-
-
-
     @PostMapping
-    public ResponseEntity<TalentResponse> createCard(@RequestParam MultipartFile file,@RequestParam Long user_id,@RequestBody NewCardRequest request){
-        Card card=cardService.createCard(file, user_id,request);
+    public ResponseEntity<TalentResponse> createCard(@RequestParam Long user_id, @RequestParam("imageFile") MultipartFile imageFile, @RequestBody NewCardRequest request){
 
-
+        Card card=cardService.createCard( user_id,imageFile, request);
         TalentResponse response=
-                new TalentResponse(file,"Successfully created", HttpStatus.CREATED);
+                new TalentResponse(card,"Successfully created", HttpStatus.CREATED);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
     @GetMapping

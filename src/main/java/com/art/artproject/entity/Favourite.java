@@ -20,6 +20,7 @@ public class Favourite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long user_id;
     private Boolean favourite;
 
     @OneToOne
