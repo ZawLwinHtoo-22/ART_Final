@@ -1,10 +1,7 @@
 package com.art.artproject.controller;
 
-<<<<<<< HEAD
 import com.art.artproject.domain.OTPValidateRequest;
-import com.art.artproject.dto.NewFeedbackRequest;
-=======
->>>>>>> 6ee21ce59f7530cf681c45adf1863a59902f8866
+
 import com.art.artproject.dto.NewUserRequest;
 import com.art.artproject.domain.TalentResponse;
 import com.art.artproject.dto.UserResponse;

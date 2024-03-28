@@ -16,11 +16,10 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-<<<<<<< HEAD
+
     private String imageFile;
-=======
+
     private String file;
->>>>>>> 6ee21ce59f7530cf681c45adf1863a59902f8866
     private String imageTitle;
     private Double price;
     private String description;

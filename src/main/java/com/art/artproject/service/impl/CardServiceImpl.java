@@ -4,7 +4,7 @@ import com.art.artproject.dto.NewCardRequest;
 import com.art.artproject.dto.UserNameResponse;
 import com.art.artproject.entity.Card;
 import com.art.artproject.entity.Category;
-import com.art.artproject.entity.FileUtils;
+
 import com.art.artproject.entity.User;
 import com.art.artproject.repo.CardRepo;
 import com.art.artproject.repo.CategoryRepo;
@@ -36,11 +36,7 @@ public class CardServiceImpl implements CardService {
 
 
     @Override
-<<<<<<< HEAD
-    public Card createCard(Long user_id, NewCardRequest request) {
-=======
     public Card createCard(MultipartFile file,Long user_id, NewCardRequest request) {
->>>>>>> 6ee21ce59f7530cf681c45adf1863a59902f8866
         Card card=mapper.map(request,Card.class);
         Optional<User> user=userRepo.findById(user_id);
         Optional<UserNameResponse> userNameResponseOptional = userRepo.findUserNameById(user_id);

@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
         }else{
 
 
-            throw new RuntimeException("User already exist");
+            throw new RuntimeException("UserName not Found`q");
 
         }
     }
