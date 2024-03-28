@@ -8,5 +8,5 @@ import lombok.Setter;
 public class FavouriteRequest {
 
     private Boolean favourite;
-    private Long card_id;
+
 }
