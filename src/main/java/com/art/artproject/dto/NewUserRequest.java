@@ -10,7 +10,6 @@ import lombok.Setter;
 @Builder
 public class NewUserRequest {
 
-    private Long id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -25,7 +24,6 @@ public class NewUserRequest {
     public static User getUser(NewUserRequest userRequest){
         return new User()
                 .builder()
-                .id(userRequest.getId())
                 .userName(userRequest.getFirstName()+" "+userRequest.getLastName())
                 .profileImage(userRequest.getProfileImage())
                 .build();

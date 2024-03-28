@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class NewCardRequest {
 
+    private String imageFile;
     private String imageTitle;
     private Double price;
     private String description;

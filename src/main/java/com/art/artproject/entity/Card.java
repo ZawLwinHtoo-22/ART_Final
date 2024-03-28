@@ -3,10 +3,6 @@ package com.art.artproject.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.nio.file.Path;
-import java.util.Arrays;
 
 @Entity
 @Getter
