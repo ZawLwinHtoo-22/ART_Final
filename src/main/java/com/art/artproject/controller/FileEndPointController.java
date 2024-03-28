@@ -1,8 +1,13 @@
 package com.art.artproject.controller;
 
+<<<<<<< HEAD
 
 import com.art.artproject.entity.FileExtentionMapper;
 import com.art.artproject.entity.FileUtils;
+=======
+import com.art.artproject.utils.FileExtentionMapper;
+import com.art.artproject.utils.FileUtils;
+>>>>>>> 6ee21ce59f7530cf681c45adf1863a59902f8866
 import org.springframework.core.io.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
