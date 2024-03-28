@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class NewCardRequest {
 
+    private String imageFile;
     private String imageTitle;
     private Double price;
     private String description;

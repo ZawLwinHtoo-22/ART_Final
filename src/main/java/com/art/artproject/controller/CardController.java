@@ -3,6 +3,7 @@ package com.art.artproject.controller;
 import com.art.artproject.domain.TalentResponse;
 import com.art.artproject.dto.NewCardRequest;
 import com.art.artproject.entity.Card;
+import com.art.artproject.entity.FileUtils;
 import com.art.artproject.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,9 +25,9 @@ public class CardController {
 //        return FileUtils.save(file);
 //    }
 
-    @PostMapping(consumes = "multipart/form-data")
-    public ResponseEntity<TalentResponse> createCard(@RequestParam MultipartFile file,@RequestParam Long user_id,@RequestBody NewCardRequest request){
-        Card card=cardService.createCard(file, user_id,request);
+    @PostMapping
+    public ResponseEntity<TalentResponse> createCard(@RequestParam Long user_id,@RequestBody NewCardRequest request){
+        Card card=cardService.createCard(user_id,request);
         TalentResponse response=
                 new TalentResponse(card,"Successfully created", HttpStatus.CREATED);
         return new ResponseEntity<>(response,HttpStatus.CREATED);

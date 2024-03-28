@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/favorite")
+@RequestMapping("/favourite")
 public class FavouriteController {
 
     @Autowired
     private FavouriteService favouriteService;
 
     @PostMapping
-    public ResponseEntity<TalentResponse> giveFavourite (@RequestParam Long card_id, FavouriteRequest request){
-        Favourite favourite = favouriteService.giveFavourite(card_id, request);
+    public ResponseEntity<TalentResponse> giveFavourite (@RequestParam Long user_id, @RequestParam Long card_id, FavouriteRequest request){
+        Favourite favourite = favouriteService.giveFavourite(user_id,card_id, request);
         TalentResponse response =
                 new TalentResponse<>(favourite, "success fav", HttpStatus.CREATED);
         return new ResponseEntity<>(response, HttpStatus.CREATED);

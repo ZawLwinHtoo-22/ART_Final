@@ -5,5 +5,5 @@ import com.art.artproject.entity.Favourite;
 
 public interface FavouriteService {
 
-    Favourite giveFavourite(Long card_id, FavouriteRequest favouriteRequest);
+    Favourite giveFavourite(Long user_id,Long card_id, FavouriteRequest favouriteRequest);
 }
