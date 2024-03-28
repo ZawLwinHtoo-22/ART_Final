@@ -1,9 +1,12 @@
 package com.art.artproject.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Path;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.nio.file.Path;
+import java.util.Arrays;
 
 @Entity
 @Getter
@@ -16,14 +19,25 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-
     private String imageFile;
-
-    private String file;
     private String imageTitle;
     private Double price;
     private String description;
     private String userName;
+
+
+//    Byte[] FileData = new Byte[imageFile.length];
+//    for (int i = 0; i < imageFile.length; i++) {
+//        FileData[i] = imageFile[i];
+//    }
+//    public Byte[] getimageFile() {
+//        return Arrays.stream(imageFile)
+//                .sorted()
+//                .toArray(Byte[]::new);
+//    }
+//    public void setimageFile(Byte[] imageFile) {
+//        this.imageFile = imageFile;
+//    }
 
 
     @ManyToOne(cascade = CascadeType.PERSIST)
