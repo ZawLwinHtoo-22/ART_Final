@@ -6,8 +6,12 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+      type:
+        wrapper_array_handling:ALLOW
   h2:
     console:
       enabled: true
+
+
 
 
