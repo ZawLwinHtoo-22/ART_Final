@@ -36,7 +36,6 @@ public class CardController {
 
             Gson gson = new Gson();
             NewCardRequest request = gson.fromJson(requestString, NewCardRequest.class);
-            
         Card card=cardService.createCard( user_id,imageFile, request);
         TalentResponse response=
                 new TalentResponse(card,"Successfully created", HttpStatus.CREATED);
