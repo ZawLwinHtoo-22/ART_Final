@@ -58,63 +58,6 @@ public class CardServiceImpl implements CardService {
         card.setCategory(category);
         card.setImageFile(utils.save(imageFile));
         card.setPrice(request.getPrice());
-
-        // Handle imageFile
-//        if (imageFile != null && !imageFile.isEmpty()) {
-//            // Handle file upload and set imageFile attribute
-//            // Example: Save file to a location and set the file path in card.setImageFile(filePath);
-//            card.setImageFile(request.getImageFile());
-//
-//
-//        } else {
-//            // Handle case when imageFile is null or empty
-//            // Example: Set a default image or throw an exception if imageFile is required
-//            throw new NoSuchElementException("No image found ");
-//        }
-
-
-//        byte[] imageData;
-//        try {
-//            imageData = imageFile.getBytes();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            throw new RuntimeException("Failed to read image file bytes.", e);
-//        }
-//
-//        String imageDataJson;
-//        try {
-//            imageDataJson = objectMapper.writeValueAsString(imageData);
-//        } catch (JsonProcessingException e) {
-//            e.printStackTrace();
-//
-//            throw new RuntimeException("Failed to convert image data to JSON.", e);
-//        }
-//        card.setImageFile(imageDataJson);
-
-//        byte[] imageData = new byte[0];
-//        try {
-//            imageData = imageFile.getBytes();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
-//        Byte[] imageFileBytes = new Byte[imageData.length];
-//        for (int i = 0; i < imageData.length; i++) {
-//            imageFileBytes[i] = imageData[i];
-//        }
-//
-//        card.setimageFile(imageFileBytes);
-//
-
-//        try {
-//            String jsonString = objectMapper.writeValueAsString(imageData);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-
-//        }
-
-
         return cardRepo.save(card);
     }
 

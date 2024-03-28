@@ -21,6 +21,10 @@ public class Payment {
     @JoinColumn(name = "card_id")
     private Card card;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
 
 }
