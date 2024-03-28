@@ -14,10 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Arrays;
+
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FavouriteServiceImpl implements FavouriteService {
@@ -36,6 +37,19 @@ public class FavouriteServiceImpl implements FavouriteService {
 
     @Autowired
     public ModelMapper mapper;
+
+
+//    @Override
+//    public Favourite giveFavourite(Long card_id, FavouriteRequest favouriteRequest) {
+//
+//        Favourite favourite = mapper.map(favouriteRequest, Favourite.class);
+//        Optional<Card> card = cardRepo.findById(card_id);
+//
+//
+//        favourite.setCard(card.get());
+//        favourite.setFavourite(card.isPresent());
+//        return favouriteRepo.save(favourite);
+//    }
 
 //    @Override
 //    public Card createCard(Long user_id, NewCardRequest request) {
@@ -57,16 +71,42 @@ public class FavouriteServiceImpl implements FavouriteService {
 //    }
 
     @Override
-    public Favourite giveFavourite(Long user_id,Long card_id, FavouriteRequest favouriteRequest) {
-
-            Favourite favourite = mapper.map(favouriteRequest, Favourite.class);
-            Optional<Card> card = cardRepo.findById(card_id);
-            Optional<User> user = userRepo.findById(user_id);
-
-            favourite.setUser_id(user.get().getId());
-            favourite.setCard(card.get());
-            favourite.setFavourite(card.isPresent());
+    public Favourite giveFavourite(String user_ids, Long card_id, FavouriteRequest favouriteRequest) {
+        Favourite favourite = mapper.map(favouriteRequest, Favourite.class);
+        Optional<Card> card = cardRepo.findById(card_id);
+        List<Long> userIds = Arrays.stream(user_ids.split(","))
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
+        List<User> users=userRepo.findAllById(userIds);
+        favourite.setUsers(users);
+        favourite.setCard(card.get());
+        favourite.setFavourite(card.isPresent());
 
         return favouriteRepo.save(favourite);
     }
+
+    @Override
+    public List<Favourite> showAll() {
+        return favouriteRepo.findAll();
+    }
+
+    @Override
+    public Favourite updateNewFavourite(Long id, FavouriteRequest request) {
+        Optional<Favourite> fav=favouriteRepo.findById(id);
+        if(fav.isPresent()){
+            Favourite favourite=fav.get();
+            favourite.setFavourite(request.getFavourite());
+
+            return favouriteRepo.save(favourite);
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteFavourite(Long id) {
+        if(favouriteRepo.existsById(id)){
+            favouriteRepo.deleteById(id);
+        }
+    }
+
 }

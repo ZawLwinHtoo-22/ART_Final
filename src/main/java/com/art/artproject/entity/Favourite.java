@@ -27,5 +27,7 @@ public class Favourite {
     @JoinColumn(name = "card_id")
     private Card card;
 
-
+    @ManyToMany
+    @JoinTable(name = "fav_userID")
+    private List<User> users = new ArrayList<>();
 }
