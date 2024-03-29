@@ -20,14 +20,12 @@ public class Favourite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long user_id;
-    private Boolean favourite;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "card_id")
     private Card card;
-
-    @ManyToMany
-    @JoinTable(name = "fav_userID")
-    private List<User> users = new ArrayList<>();
 }

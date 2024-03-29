@@ -17,7 +17,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public AdminInfo validateAdmin(AdminValidateRequest adminValidateRequest) {
         final Admin admin = adminRepo
-                .findAdminByMail(adminValidateRequest.getMail())
+                .findAdminByMailAndPassword(adminValidateRequest.getMail(),adminValidateRequest.getPassword())
                 .orElseThrow( () -> new RuntimeException("NO Admin"));
 
         return AdminInfo.of(admin);
