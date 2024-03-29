@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/cards")
+@CrossOrigin
 public class CardController {
     @Autowired
     private CardService cardService;
@@ -30,11 +30,20 @@ public class CardController {
         List<Card> cards=cardService.showAll();
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
+
+    @GetMapping("/find")
+    public ResponseEntity<Card> showById(@RequestParam Long card_id){
+        Card card = cardService.showWithId(card_id);
+        return new ResponseEntity<>(card,HttpStatus.OK);
+
+    }
     @GetMapping("/filter")
     public ResponseEntity<List<Card>> showWithType(@RequestParam Long category_id){
         List<Card> cards=cardService.showWithType(category_id);
         return new ResponseEntity<>(cards,HttpStatus.OK);
     }
+
+
 
 
 }

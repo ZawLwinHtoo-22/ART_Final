@@ -28,6 +28,13 @@ public class CardServiceImpl implements CardService {
     private UserRepo userRepo;
     @Autowired
     private CategoryRepo categoryRepo;
+
+    @Override
+    public Card showWithId(Long card_id) {
+        return cardRepo.findById(card_id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ID  " + card_id));
+    }
+
     @Autowired
     private CardService cardService;
     @Override

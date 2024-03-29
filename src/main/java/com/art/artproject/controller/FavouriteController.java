@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/favorite")
+@RequestMapping("/favourite")
 public class FavouriteController {
 
     @Autowired
