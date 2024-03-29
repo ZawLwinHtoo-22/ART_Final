@@ -7,28 +7,23 @@ import com.art.artproject.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/feedback")
 public class FeedbackController {
 
     @Autowired
     private FeedbackService feedbackService;
 
-    @PostMapping("/feedback")
-    public ResponseEntity<Feedback> saveFeedback(@RequestBody NewFeedbackRequest feedbackRequest) {
-        Feedback feedback = feedbackService.save(feedbackRequest);
-        return new ResponseEntity<>(feedback, HttpStatus.CREATED);
+    @PostMapping
+    public ResponseEntity<TalentResponse<Feedback>> giveFeedback(@RequestParam Long user_id, @RequestBody NewFeedbackRequest request){
+        Feedback feedback = feedbackService.giveFeedback(user_id, request);
+        TalentResponse response =
+                new TalentResponse<>(feedback, "Success give feedback",HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-//    @PostMapping
-//    public ResponseEntity<Book> saveBook(@RequestBody BookRequest bookRequest) {
-//        Book book = bookService.save(bookRequest);
-//        return new ResponseEntity<>(book, HttpStatus.CREATED);
-//    }
 
 }

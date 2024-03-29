@@ -22,7 +22,9 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<TalentResponse<CategoryResponse>> saveNewCategory(@RequestBody NewCategoryRequest request) {  // @RequestBody annotation is used to bind the parameter with the body of the HTTP request
         TalentResponse<CategoryResponse> talentResponse=
-                new TalentResponse<>(categoryService.saveNewCategory(request),"Successfully created",HttpStatus.CREATED );
+
+                new TalentResponse<>(categoryService.saveNewCategory(request), "Successfully created",HttpStatus.CREATED );
+
         return new ResponseEntity<>(talentResponse, HttpStatus.CREATED);
     }
 

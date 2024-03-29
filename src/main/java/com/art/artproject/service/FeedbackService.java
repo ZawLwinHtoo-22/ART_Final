@@ -5,6 +5,6 @@ import com.art.artproject.entity.Feedback;
 import jakarta.transaction.Transactional;
 
 public interface FeedbackService {
-    Feedback save(NewFeedbackRequest feedbackRequest);
 
+    Feedback giveFeedback(Long user_id, NewFeedbackRequest feedbackRequest);
 }

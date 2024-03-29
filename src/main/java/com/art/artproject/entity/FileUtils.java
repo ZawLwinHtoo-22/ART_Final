@@ -21,7 +21,7 @@ public class FileUtils {
 
     public static String save(MultipartFile file){
 
-        String resultPath = "";
+        String resultPath = "C:/Result";
 
         try {
 

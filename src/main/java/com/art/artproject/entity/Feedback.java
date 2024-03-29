@@ -3,27 +3,25 @@ package com.art.artproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Feedback {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(columnDefinition = "NVARCHAR(30)") // columnDefinition is used to specify the SQL data type for the column
+    private Long id;
     private String comment;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Feedback( String comment, User user) {
-        this.comment = comment;
-        this.user = user;
-    }
+
 }

@@ -3,6 +3,7 @@ package com.art.artproject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.http.MediaType;
 
 @Entity
 @Getter
@@ -25,4 +26,5 @@ public class Admin {
         this.mail = mail;
         this.password = password;
     }
+
 }
