@@ -14,5 +14,6 @@ public interface CardService {
     List<Card> showAll();
     List<Card> showWithType(Long category_id);
 
+    Card showWithId(Long card_id);
 
 }

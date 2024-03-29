@@ -52,5 +52,12 @@ public class CardController {
         return new ResponseEntity<>(cards,HttpStatus.OK);
     }
 
+    @GetMapping("/find")
+    public ResponseEntity<Card> showById(@RequestParam Long card_id){
+        Card card = cardService.showWithId(card_id);
+        return new ResponseEntity<>(card,HttpStatus.OK);
+
+    }
+
 
 }

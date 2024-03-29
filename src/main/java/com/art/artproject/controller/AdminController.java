@@ -17,7 +17,7 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @PostMapping
+    @PostMapping("/validate")
     public ResponseEntity<TalentResponse<AdminInfo>> validateAdmin(@RequestBody AdminValidateRequest request){
         AdminInfo adminInfo=adminService.validateAdmin(request);
         TalentResponse<AdminInfo> response=
