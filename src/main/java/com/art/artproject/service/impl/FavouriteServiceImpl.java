@@ -71,17 +71,12 @@ public class FavouriteServiceImpl implements FavouriteService {
 //    }
 
     @Override
-    public Favourite giveFavourite(String user_ids, Long card_id, FavouriteRequest favouriteRequest) {
-        Favourite favourite = mapper.map(favouriteRequest, Favourite.class);
-        Optional<Card> card = cardRepo.findById(card_id);
-        List<Long> userIds = Arrays.stream(user_ids.split(","))
-                .map(Long::valueOf)
-                .collect(Collectors.toList());
-        List<User> users=userRepo.findAllById(userIds);
-        favourite.setUsers(users);
-        favourite.setCard(card.get());
-        favourite.setFavourite(card.isPresent());
-
+    public Favourite doFavourite(Long user_id, Long card_id) {
+        Favourite favourite=new Favourite();
+        User user=userRepo.findById(user_id).get();
+        Card card=cardRepo.findById(card_id).get();
+        favourite.setUser(user);
+        favourite.setCard(card);
         return favouriteRepo.save(favourite);
     }
 
@@ -90,17 +85,7 @@ public class FavouriteServiceImpl implements FavouriteService {
         return favouriteRepo.findAll();
     }
 
-    @Override
-    public Favourite updateNewFavourite(Long id, FavouriteRequest request) {
-        Optional<Favourite> fav=favouriteRepo.findById(id);
-        if(fav.isPresent()){
-            Favourite favourite=fav.get();
-            favourite.setFavourite(request.getFavourite());
 
-            return favouriteRepo.save(favourite);
-        }
-        return null;
-    }
 
     @Override
     public void deleteFavourite(Long id) {

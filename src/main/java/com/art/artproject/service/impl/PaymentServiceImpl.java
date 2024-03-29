@@ -38,7 +38,7 @@ public class PaymentServiceImpl implements PaymentService {
         Optional<User> user = userRepo.findById(user_id);
         payment.setCard(card.get());
         payment.setUser(user.get());
-//        payment.setAmount(card.get().getPrice());
+        payment.setAmount(card.get().getPrice());
         return paymentRepo.save(payment);
     }
 

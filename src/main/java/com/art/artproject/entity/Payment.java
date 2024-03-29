@@ -15,7 +15,7 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    private Double amount;
+    private Double amount;
 
     @OneToOne
     @JoinColumn(name = "card_id")
