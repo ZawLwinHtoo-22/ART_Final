@@ -1,8 +1,6 @@
 package com.art.artproject.entity;
 
-import com.art.artproject.constant.FileConstant;
 import io.micrometer.common.util.StringUtils;
-import jakarta.persistence.Entity;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +19,7 @@ public class FileUtils {
 
     public static String save(MultipartFile file){
 
-        String resultPath = "C:/Result";
+        String resultPath = "";
 
         try {
 

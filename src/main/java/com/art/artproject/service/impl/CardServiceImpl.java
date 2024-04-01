@@ -11,7 +11,6 @@ import com.art.artproject.repo.CardRepo;
 import com.art.artproject.repo.CategoryRepo;
 import com.art.artproject.repo.UserRepo;
 import com.art.artproject.service.CardService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,15 +31,11 @@ public class CardServiceImpl implements CardService {
     @Autowired
     private CardService cardService;
 
-    public final ObjectMapper objectMapper;
-
-    public CardServiceImpl(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
-
-
+    public FileEndPointController controller;
     public FileUtils utils;
 
+//    @Autowired
+//    private FileStorageService fileStorageService;
 
     @Override
     public Card createCard(Long user_id, MultipartFile imageFile, NewCardRequest request) {

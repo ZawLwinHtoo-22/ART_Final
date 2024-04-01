@@ -1,16 +1,16 @@
 package com.art.artproject;
 
+import jakarta.annotation.Resource;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ArtProjectApplication{
-
     public static void main(String[] args) {
         SpringApplication.run(ArtProjectApplication.class, args);
-
 
     }
 
@@ -18,6 +18,7 @@ public class ArtProjectApplication{
     ModelMapper modelMapper() { // To perform injection, the method must be bean
         return new ModelMapper();
     }
+
 
 
 }

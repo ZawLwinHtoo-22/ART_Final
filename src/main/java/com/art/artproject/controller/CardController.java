@@ -4,7 +4,6 @@ import com.art.artproject.domain.TalentResponse;
 import com.art.artproject.dto.NewCardRequest;
 import com.art.artproject.entity.Card;
 import com.art.artproject.service.CardService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,11 +40,19 @@ public class CardController {
                 new TalentResponse(card,"Successfully created", HttpStatus.CREATED);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
+//    @GetMapping
+//    public ResponseEntity<List<Card>> showAll(@RequestParam String filePath){
+//        List<Card> cards=cardService.showAll(filePath);
+//        return new ResponseEntity<>(cards, HttpStatus.OK);
+//    }
+
     @GetMapping
-    public ResponseEntity<List<Card>> showAll(){
-        List<Card> cards=cardService.showAll();
-        return new ResponseEntity<>(cards, HttpStatus.OK);
+    public ResponseEntity<List<Card>> showAllCards() {
+        List<Card> cards = cardService.showAll();
+        return ResponseEntity.ok().body(cards);
     }
+
+
     @GetMapping("/filter")
     public ResponseEntity<List<Card>> showWithType(@RequestParam Long category_id){
         List<Card> cards=cardService.showWithType(category_id);
