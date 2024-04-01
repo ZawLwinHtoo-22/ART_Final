@@ -2,20 +2,19 @@ package com.art.artproject.service.impl;
 
 import com.art.artproject.dto.NewCardRequest;
 import com.art.artproject.dto.UserNameResponse;
-import com.art.artproject.entity.Card;
-import com.art.artproject.entity.Category;
+import com.art.artproject.entity.*;
 
-import com.art.artproject.entity.FileUtils;
-import com.art.artproject.entity.User;
 import com.art.artproject.repo.CardRepo;
 import com.art.artproject.repo.CategoryRepo;
 import com.art.artproject.repo.UserRepo;
 import com.art.artproject.service.CardService;
+import com.art.artproject.service.StorageService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -30,15 +29,11 @@ public class CardServiceImpl implements CardService {
     private CategoryRepo categoryRepo;
     @Autowired
     private CardService cardService;
-
-    public FileEndPointController controller;
-    public FileUtils utils;
-
-//    @Autowired
-//    private FileStorageService fileStorageService;
+    @Autowired
+    private StorageService service;
 
     @Override
-    public Card createCard(Long user_id, MultipartFile imageFile, NewCardRequest request) {
+    public Card createCard(Long user_id, MultipartFile imageFile, NewCardRequest request) throws IOException {
         Card card=mapper.map(request,Card.class);
         Optional<User> user=userRepo.findById(user_id);
         Optional<UserNameResponse> userNameResponseOptional = userRepo.findUserNameById(user_id);
@@ -51,7 +46,7 @@ public class CardServiceImpl implements CardService {
         Category category=categoryRepo.findById(request.getCategory_id()).get();
         card.setUser(user.get());
         card.setCategory(category);
-        card.setImageFile(utils.save(imageFile));
+        card.setImageFile(service.uploadImage(imageFile));
         card.setPrice(request.getPrice());
         return cardRepo.save(card);
     }

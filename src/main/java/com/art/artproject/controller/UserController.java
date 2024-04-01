@@ -28,16 +28,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
-    public ResponseEntity<TalentResponse<UserResponse>> registerUser(@RequestParam("pf_img")MultipartFile file, @RequestParam String requestString){
-
-        Gson gson = new Gson();
-        NewUserRequest request = gson.fromJson(requestString, NewUserRequest.class);
-
-        TalentResponse<UserResponse> response=
-                new TalentResponse<>(userService.registerUser(file, request), "Successfully registered", HttpStatus.CREATED );
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+//    @PostMapping
+//    public ResponseEntity<TalentResponse<UserResponse>> registerUser(@RequestParam("pf_img")MultipartFile file, @RequestParam String requestString){
+//
+//        Gson gson = new Gson();
+//        NewUserRequest request = gson.fromJson(requestString, NewUserRequest.class);
+//
+//        TalentResponse<UserResponse> response=
+//                new TalentResponse<>(userService.registerUser(file, request), "Successfully registered", HttpStatus.CREATED );
+//        return new ResponseEntity<>(response, HttpStatus.CREATED);
+//    }
     @PostMapping("/validate")
     public ResponseEntity<UserInfo> validateUser(@RequestBody UserValidateRequest request){
         return ResponseEntity.ok(userService.validateUser(request));

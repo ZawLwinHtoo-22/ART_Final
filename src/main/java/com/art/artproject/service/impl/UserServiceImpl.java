@@ -5,7 +5,6 @@ import com.art.artproject.cache.OTPCache;
 import com.art.artproject.constant.EmailConstant;
 import com.art.artproject.domain.OTPValidateRequest;
 import com.art.artproject.dto.*;
-import com.art.artproject.entity.FileUtils;
 import com.art.artproject.entity.User;
 import com.art.artproject.entity.UserInfo;
 import com.art.artproject.repo.UserRepo;
@@ -35,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
     private final EmailUtil emailUtil;
 
-    private FileUtils utils;
+
 
     public UserServiceImpl(EmailUtil emailUtil) {
         this.emailUtil = emailUtil;
@@ -44,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse registerUser(MultipartFile file, NewUserRequest request) {
         User user=User.of(request);
-        user.setProfileImage(utils.save(file));
+//        user.setProfileImage(utils.save(file));
         return mapper.map(userRepo.save(user),UserResponse.class);
     }
 

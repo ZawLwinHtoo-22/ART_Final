@@ -23,7 +23,7 @@ public class StorageService {
     @Autowired
     private FileDataRepo fileDataRepository;
 
-    private final String FOLDER_PATH="C:\\FILE_STORAGE";
+    private final String FOLDER_PATH="C:\\FILE_STORAGE\\";
 
     public String uploadImage(MultipartFile file) throws IOException {
         ImageData imageData = repository.save(ImageData.builder()

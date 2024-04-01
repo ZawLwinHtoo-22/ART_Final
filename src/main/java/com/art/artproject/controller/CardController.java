@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,7 @@ public class CardController {
 
 
         @PostMapping
-    public ResponseEntity<TalentResponse> createCard(@RequestParam Long user_id, @RequestParam("imageFile") MultipartFile imageFile, @RequestParam String requestString){
+    public ResponseEntity<TalentResponse> createCard(@RequestParam Long user_id, @RequestParam("imageFile") MultipartFile imageFile, @RequestParam String requestString) throws IOException {
 
             Gson gson = new Gson();
             NewCardRequest request = gson.fromJson(requestString, NewCardRequest.class);
@@ -40,11 +41,6 @@ public class CardController {
                 new TalentResponse(card,"Successfully created", HttpStatus.CREATED);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
-//    @GetMapping
-//    public ResponseEntity<List<Card>> showAll(@RequestParam String filePath){
-//        List<Card> cards=cardService.showAll(filePath);
-//        return new ResponseEntity<>(cards, HttpStatus.OK);
-//    }
 
     @GetMapping
     public ResponseEntity<List<Card>> showAllCards() {
